@@ -1,0 +1,48 @@
+#!/usr/bin/env sh
+
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# bsp or float (default: float)
+yabai -m config layout bspbai -m config layout bsp
+
+# set mouse follows focus mode (default: off)
+yabai -m config mouse_follows_focus on
+# set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
+yabai -m config focus_follows_mouse autoraise
+yabai -m config window_placement             second_child
+yabai -m config window_animation_duration    0.5
+yabai -m config window_shadow                float
+yabai -m config auto_balance                 off
+yabai -m config focus_follows_mouse          off
+yabai -m config mouse_follows_focus          off
+yabai -m config mouse_modifier               ctrl
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+yabai -m config window_topmost               off
+
+# Set all padding and gaps to 10pt (default: 0)
+yabai -m config top_padding    10
+yabai -m config bottom_padding 10
+yabai -m config left_padding   10
+yabai -m config right_padding  10
+yabai -m config window_gap     10
+
+# float system preferences
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Shortcuts$" manage=off
+yabai -m rule --add app="^KeePassXC$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Bitwarden$" manage=off
+yabai -m rule --add app="^Telegram$" manage=off
+yabai -m rule --add app="^Flameshot$" manage=off
+yabai -m rule --add app="^QuickTime Player$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
+yabai -m rule --add app="^CleanMyMac X$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="^Preview$" manage=off
+yabai -m rule --add app="^Music$" manage=off
